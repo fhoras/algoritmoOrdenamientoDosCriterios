@@ -103,23 +103,34 @@ function burbuja(vectorNumeros: number[]) {
       }
     }
   }
-  console.log("Vector ordenado método burbuja " + vectorNumeros); // Mostramos, por consola, la lista ya ordenada
+  console.log("Vector ordenado método burbuja " + vectorNumeros);
+}
+
+function intercambiar(arreglo: number[], i: number, j: number) {
+  let aux: number;
+  aux = arreglo[i];
+  arreglo[i] = arreglo[j];
+  arreglo[j] = aux;
 }
 
 function seleccion(vectorNumeros: number[]) {
-  var n, i, k, aux;
-  n = vectorNumeros.length;
+  let tamañoVector, i, j, min;
+  tamañoVector = vectorNumeros.length;
   // console.log("Vector desordenado " + vectorNumeros);
   // Algoritmo de seleccion
-  for (k = 1; k < n; k++) {
-    for (i = 0; i < n - k; i++) {
-      if (vectorNumeros[i] > vectorNumeros[i + 1]) {
-        aux = vectorNumeros[i];
-        vectorNumeros[i] = vectorNumeros[i + 1];
-        vectorNumeros[i + 1] = aux;
+  for (i = 0; i < tamañoVector - 1; i++) {
+    min = i;
+    for (j = i + 1; j < tamañoVector; j++) {
+      if (vectorNumeros[min] > vectorNumeros[j]) {
+        min = j;
       }
     }
   }
+  if (min !== i) {
+    // Se encontró un numero minimo
+    intercambiar(vectorNumeros, i, min);
+  }
+
   console.log("Vector ordenado método selección " + vectorNumeros); // Mostramos, por consola, la lista ya ordenada
 }
 
@@ -136,4 +147,6 @@ btnDatos1.addEventListener("click", () => {
   burbuja(vectorAlturas);
   burbuja(vectorNombres);
   seleccion(vectorEdades);
+  seleccion(vectorAlturas);
+  seleccion(vectorNombres);
 });

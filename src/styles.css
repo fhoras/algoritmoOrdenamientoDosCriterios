@@ -7,17 +7,19 @@ div {
   background-image: url(https://images.pexels.com/photos/1212487/pexels-photo-1212487.jpeg?auto=compress&cs=tinysrgb&w=600);
   background-repeat: no-repeat;
   background-size: contain;
-  width: 250%;
-  height: 350px;
+  width: 350%;
+  height: 450px;
 }
 h2 {
   text-align: center;
 }
 p {
-  text-align: justify;
   font-style: "Times New Roman";
   font-style: italic;
   color: white;
+  justify-content: center;
+  align-items: center;
+  word-break: break-all;
 }
 
 button {
