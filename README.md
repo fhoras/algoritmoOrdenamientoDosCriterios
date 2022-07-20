@@ -1,2 +1,2 @@
-# algoritmoOrdenamientoDosCriterios
+# ejercicioOrdenamientoDosCriterios
 Created with CodeSandbox
