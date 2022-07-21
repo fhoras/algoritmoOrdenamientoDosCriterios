@@ -153,7 +153,7 @@ function seleccionTresVectores(
   let tamañoVector, i, j, min, aux, auxNom;
   tamañoVector = vectorEdades.length;
   // Algoritmo de seleccion
-  for (i = 0; i < tamañoVector - 1; i++) {
+  for (i = 0; i < tamañoVector - 2; i++) {
     min = i;
     for (j = i + 1; j < tamañoVector; j++) {
       if (vectorEdades[min] > vectorEdades[j]) {
@@ -166,25 +166,25 @@ function seleccionTresVectores(
         }
       }
     }
+
+    if (min !== i) {
+      // Se encontró un numero minimo
+      // Intercambio de vector de edades
+      aux = vectorEdades[i];
+      vectorEdades[i] = vectorEdades[min];
+      vectorEdades[min] = aux;
+
+      // Intercambio de vector de alturas
+      aux = vectorAlturas[i];
+      vectorAlturas[i] = vectorAlturas[min];
+      vectorAlturas[min] = aux;
+
+      // Intercambio de vector de nombres
+      auxNom = vectorNombres[i];
+      vectorNombres[i] = vectorNombres[min];
+      vectorNombres[min] = auxNom;
+    }
   }
-  if (min !== i) {
-    // Se encontró un numero minimo
-    // Intercambio de vector de edades
-    aux = vectorEdades[i];
-    vectorEdades[i] = vectorEdades[min];
-    vectorEdades[min] = aux;
-
-    // Intercambio de vector de alturas
-    aux = vectorAlturas[i];
-    vectorAlturas[i] = vectorAlturas[min];
-    vectorAlturas[min] = aux;
-
-    // Intercambio de vector de nombres
-    auxNom = vectorNombres[i];
-    vectorNombres[i] = vectorNombres[min];
-    vectorNombres[min] = auxNom;
-  }
-
   console.log("Vectores ordenados método selección ");
   console.log("Vector edades " + vectorEdades);
   console.log("Vector alturas " + vectorAlturas);
