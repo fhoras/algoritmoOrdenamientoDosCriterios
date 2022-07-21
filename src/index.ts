@@ -43,7 +43,7 @@ function cargarVectorEdades(max: number): number[] {
   for (let i = 0; i < max; i++) {
     numeros[i] = AzarNumeros(30, 0);
   }
-  console.log(numeros);
+  console.log("Vector edades " + numeros);
   return numeros;
 }
 
@@ -52,7 +52,7 @@ function cargarVectorAltura(max: number): number[] {
   for (let i = 0; i < max; i++) {
     numeros[i] = AzarNumeros(180, 100);
   }
-  console.log(numeros);
+  console.log("Vector Alturas " + numeros);
   return numeros;
 }
 
@@ -73,11 +73,10 @@ function cargarVectorNombres(max: number): string[] {
   for (let i = 0; i < max; i++) {
     nombres[i] = nombresAzar();
   }
-  console.log(nombres);
+  console.log("Vector nombres " + nombres);
   return nombres;
 }
-
-
+/*
 function intercambiar(arreglo: number[], i: number, j: number) {
   let aux: number;
   aux = arreglo[i];
@@ -90,39 +89,60 @@ function intercambiarNombre(arreglo: string[], i: number, j: number) {
   arreglo[i] = arreglo[j];
   arreglo[j] = aux;
 }
-
+*/
 function burbujaTresVectores(
   vectorEdades: number[],
   vectorAlturas: number[],
   vectorNombres: string[]
 ) {
-  var n, i, k, aux;
+  var n, i, k, aux, auxNom;
   n = vectorEdades.length;
 
   // Algoritmo de burbuja
   for (k = 1; k < n; k++) {
     for (i = 0; i < n - k; i++) {
-      if (
-        vectorEdades[i] > vectorEdades[i + 1] &&
-        vectorAlturas[i] > vectorAlturas[i + 1]
-      ) {
+      if (vectorEdades[i] > vectorEdades[i + 1]) {
         // Intercambio los tres vectores en la misma posición
         // Intercambio de vector de edades
-        intercambiar(vectorEdades, i, i + 1);
-        intercambiar(vectorAlturas, i, i + 1);
-        intercambiarNombre(vectorNombres, i, i + 1);
+        aux = vectorEdades[i];
+        vectorEdades[i] = vectorEdades[i + 1];
+        vectorEdades[i + 1] = aux;
+
+        // Intercambio de vector de alturas
+        aux = vectorAlturas[i];
+        vectorAlturas[i] = vectorAlturas[i + 1];
+        vectorAlturas[i + 1] = aux;
+
+        // Intercambio de vector de nombres
+        auxNom = vectorNombres[i];
+        vectorNombres[i] = vectorNombres[i + 1];
+        vectorNombres[i + 1] = auxNom;
       } else {
-        if (vectorEdades[i] == vectorEdades[i + 1]) {
+        if (vectorEdades[i] === vectorEdades[i + 1]) {
           if (vectorAlturas[i] > vectorAlturas[i + 1]) {
-            intercambiar(vectorEdades, i, i + 1);
-            intercambiar(vectorAlturas, i, i + 1);
-            intercambiarNombre(vectorNombres, i, i + 1);
+            // Intercambio de vector de edades
+            aux = vectorEdades[i];
+            vectorEdades[i] = vectorEdades[i + 1];
+            vectorEdades[i + 1] = aux;
+
+            // Intercambio de vector de alturas
+            aux = vectorAlturas[i];
+            vectorAlturas[i] = vectorAlturas[i + 1];
+            vectorAlturas[i + 1] = aux;
+
+            // Intercambio de vector de nombres
+            auxNom = vectorNombres[i];
+            vectorNombres[i] = vectorNombres[i + 1];
+            vectorNombres[i + 1] = auxNom;
           }
         }
       }
     }
   }
-  console.log("Vectores ordenados método burbuja " + vectorEdades);
+  console.log("Vectores ordenados método burbuja ");
+  console.log("Vector edades " + vectorEdades);
+  console.log("Vector alturas " + vectorAlturas);
+  console.log("Vector nombres " + vectorNombres);
 }
 
 function seleccionTresVectores(
@@ -130,47 +150,56 @@ function seleccionTresVectores(
   vectorAlturas: number[],
   vectorNombres: string[]
 ) {
-  {
-    let tamañoVector, i, j, min;
-    tamañoVector = vectorEdades.length;
-    // console.log("Vector desordenado " + vectorNumeros);
-    // Algoritmo de seleccion
-    for (i = 0; i < tamañoVector - 1; i++) {
-      min = i;
-      for (j = i + 1; j < tamañoVector; j++) {
-        if (
-          vectorEdades[min] > vectorEdades[j] &&
-          vectorAlturas[min] > vectorAlturas[j]
-        ) {
-          min = j;
+  let tamañoVector, i, j, min, aux, auxNom;
+  tamañoVector = vectorEdades.length;
+  // Algoritmo de seleccion
+  for (i = 0; i < tamañoVector - 1; i++) {
+    min = i;
+    for (j = i + 1; j < tamañoVector; j++) {
+      if (vectorEdades[min] > vectorEdades[j]) {
+        min = j;
+      } else {
+        if (vectorEdades[min] === vectorEdades[j]) {
+          if (vectorAlturas[min] > vectorAlturas[j]) {
+            min = j;
+          }
         }
       }
     }
-    if (min !== i) {
-      // Se encontró un numero minimo
-      intercambiar(vectorEdades, i, min);
-      intercambiar(vectorAlturas, i, min);
-      intercambiarNombre(vectorNombres, i, min);
-    }
-
-    console.log("Vectores ordenados método selección ");
-    console.log("Vector edades " + vectorEdades);
-    console.log("Vector alturas " + vectorAlturas);
-    console.log("Vector nombres " + vectorNombres);
   }
+  if (min !== i) {
+    // Se encontró un numero minimo
+    // Intercambio de vector de edades
+    aux = vectorEdades[i];
+    vectorEdades[i] = vectorEdades[min];
+    vectorEdades[min] = aux;
+
+    // Intercambio de vector de alturas
+    aux = vectorAlturas[i];
+    vectorAlturas[i] = vectorAlturas[min];
+    vectorAlturas[min] = aux;
+
+    // Intercambio de vector de nombres
+    auxNom = vectorNombres[i];
+    vectorNombres[i] = vectorNombres[min];
+    vectorNombres[min] = auxNom;
+  }
+
+  console.log("Vectores ordenados método selección ");
+  console.log("Vector edades " + vectorEdades);
+  console.log("Vector alturas " + vectorAlturas);
+  console.log("Vector nombres " + vectorNombres);
+}
 
 btnDatos1.addEventListener("click", () => {
   let cantidad: number = cant.value;
   let vectorEdades: number[];
   let vectorAlturas: number[];
   let vectorNombres: string[];
+  console.log("Vectores desordenados ");
   vectorEdades = cargarVectorEdades(cantidad);
   vectorAlturas = cargarVectorAltura(cantidad);
   vectorNombres = cargarVectorNombres(cantidad);
-  console.log("Vectores desordenados ");
-  console.log("Vector edades " + vectorEdades);
-  console.log("Vector alturas " + vectorAlturas);
-  console.log("Vector nombres " + vectorNombres);
   console.log("Resultados");
   burbujaTresVectores(vectorEdades, vectorAlturas, vectorNombres);
   seleccionTresVectores(vectorEdades, vectorAlturas, vectorNombres);
