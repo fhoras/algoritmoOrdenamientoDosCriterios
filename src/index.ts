@@ -38,7 +38,7 @@ function intercambiarNombre(arreglo: string[], i: number, j: number) {
   arreglo[j] = aux;
 }
 
-function imprimirValoresDesordenados(
+function imprimirValores(
   edades: number[],
   alturas: number[],
   nombres: string[],
@@ -113,7 +113,7 @@ btnDatos1.addEventListener("click", () => {
   cargarVectorAltura(vectorAlturas, cantidad);
   cargarVectorNombres(vectorNombres, cantidad);
   console.log("Vectores desordenados");
-  imprimirValoresDesordenados(
+  imprimirValores(
     vectorEdades,
     vectorAlturas,
     vectorNombres,
@@ -122,10 +122,12 @@ btnDatos1.addEventListener("click", () => {
   burbujaTresVectores(vectorEdades, vectorAlturas, vectorNombres, cantidad);
   seleccionTresVectores(vectorEdades, vectorAlturas, vectorNombres, cantidad);
   console.log("Vectores ordenados");
-  imprimirValoresDesordenados(
+  imprimirValores(
     vectorEdades,
     vectorAlturas,
     vectorNombres,
     cantidad
   );
 });
+
+Creamos una función **imprimirValores** que va a recibir como parámetros los arreglos que tiene que imprimir, antes y despues de haber sido ordenados.
