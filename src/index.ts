@@ -113,21 +113,9 @@ btnDatos1.addEventListener("click", () => {
   cargarVectorAltura(vectorAlturas, cantidad);
   cargarVectorNombres(vectorNombres, cantidad);
   console.log("Vectores desordenados");
-  imprimirValores(
-    vectorEdades,
-    vectorAlturas,
-    vectorNombres,
-    cantidad
-  );
+  imprimirValores(vectorEdades, vectorAlturas, vectorNombres, cantidad);
   burbujaTresVectores(vectorEdades, vectorAlturas, vectorNombres, cantidad);
   seleccionTresVectores(vectorEdades, vectorAlturas, vectorNombres, cantidad);
   console.log("Vectores ordenados");
-  imprimirValores(
-    vectorEdades,
-    vectorAlturas,
-    vectorNombres,
-    cantidad
-  );
+  imprimirValores(vectorEdades, vectorAlturas, vectorNombres, cantidad);
 });
-
-Creamos una función **imprimirValores** que va a recibir como parámetros los arreglos que tiene que imprimir, antes y despues de haber sido ordenados.
